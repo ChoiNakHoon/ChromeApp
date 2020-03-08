@@ -10,9 +10,9 @@ function getTime() {
     const date = new Date();
     const minutes = date.getMinutes();
     const hours = date.getHours();
+    const format_12_hours = (date.getHours() + 12) % 12  || 12 ;
     const seconds = date.getSeconds();
-
-    clockTitle.innerText = `${hours}:${minutes}:${seconds}`;
+    clockTitle.innerText = `${hours < 13 ? `AM`:`PM`} ${format_12_hours< 10 ? `0${format_12_hours}` : format_12_hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
 }
 
 function init() {
